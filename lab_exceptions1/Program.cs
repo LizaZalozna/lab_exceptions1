@@ -49,6 +49,7 @@ namespace lab_exceptions1
                 new Exception("File can't be created/overwrited");
             }
             Console.WriteLine($"res = {result / count}");
+            Console.ReadKey();
         }
     }
 }
