@@ -25,7 +25,22 @@ namespace lab_exceptions1
                     }
                     count++;
                 }
-                
+                catch (FileNotFoundException)
+                {
+                    no_file.Append($"{i}.txt");
+                }
+                catch (FormatException)
+                {
+                    no_data.Append($"{i}.txt");
+                }
+                catch (OverflowException)
+                {
+                    overflow.Append($"{i}.txt");
+                }
+            }
+            try
+            {
+               
             }
         }
     }
