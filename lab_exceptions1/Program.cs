@@ -10,7 +10,7 @@ namespace lab_exceptions1
             int result = 0;
             int count = 0;
             StringBuilder no_file = new StringBuilder();
-            StringBuilder no_data = new StringBuilder();
+            StringBuilder bad_data = new StringBuilder();
             StringBuilder overflow = new StringBuilder();
             for (int i = 10; i < 30; i++)
             {
@@ -27,21 +27,28 @@ namespace lab_exceptions1
                 }
                 catch (FileNotFoundException)
                 {
-                    no_file.Append($"{i}.txt");
+                    no_file.Append($"{i}.txt\t");
                 }
                 catch (FormatException)
                 {
-                    no_data.Append($"{i}.txt");
+                    bad_data.Append($"{i}.txt\t");
                 }
                 catch (OverflowException)
                 {
-                    overflow.Append($"{i}.txt");
+                    overflow.Append($"{i}.txt\t");
                 }
             }
             try
             {
-               
+                File.WriteAllText("no_file.txt", no_file.ToString());
+                File.WriteAllText("bad_data.txt", bad_data.ToString());
+                File.WriteAllText("overflow.txt", overflow.ToString());
             }
+            catch
+            {
+                new Exception("File can't be created/overwrited");
+            }
+            Console.WriteLine($"res = {result / count}");
         }
     }
 }
